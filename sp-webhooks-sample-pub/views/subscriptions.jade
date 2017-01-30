@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 SharePoint Webhook subscriptions
+  form(action="/subscriptions", method="POST")
+    if subscriptionCreated
+      div Subscription has been created for list #{listId}
+    else
+      div
+        select(name="listId")
+          each list in lists
+            option(value=list.Id) #{list.Title}
+        input(type="submit",name="submit",value="submit")
